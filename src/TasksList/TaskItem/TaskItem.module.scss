@@ -1,0 +1,50 @@
+.tasksItem {
+    display: flex;
+    width: calc(100% - 25px - 25px);
+    justify-content: space-between;
+    color: #fff;
+    max-height: calc(90px - 20px - 20px);
+    padding: 20px 25px;
+    border-radius: 30px;
+    background: #383838;
+    margin-bottom: 25px;
+    align-items: center;
+    input {
+        font-weight: 700;
+        background: none;
+        flex: 1;
+        border: none;
+        font-size: 40px;
+        color: #fff;
+    }
+    button {
+        display: block;
+        box-sizing: border-box;
+        border: none;
+        background: none;
+        height: 46px;
+        width: 46px;
+        padding: 0;
+        margin: 0;
+        &:first-of-type {
+            display: flex;
+            justify-content: flex-start;
+            img {
+                width: 46px;
+                height: 46px;
+            }
+        }
+        img {
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+            transition: 0.2s opacity ease-in-out;
+            &:hover {
+                opacity: 0.9;
+            }
+            &:active {
+                opacity: 0.5;
+            }
+        }
+    }
+}

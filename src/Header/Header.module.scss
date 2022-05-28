@@ -1,0 +1,35 @@
+.header {
+    display: flex;
+    padding: 15px 25px;
+    justify-content: space-between;
+    background: #383838;
+    border-radius: 20px 20px 0px 0px;
+    filter: drop-shadow(3px 10px 15px rgba(0, 0, 0, 0.25));
+    .logo {
+        display: flex;
+        align-items: center;
+        width: 312px;
+        justify-content: space-between;
+        img {
+            width: 92px;
+            height: 92px;
+        }
+        h1, p {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            color: #fff;
+        }
+        h1 {
+            font-weight: 900;
+            font-size: 46px;
+            line-height: 38px;
+        }
+        p {
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 19px;
+        }
+    }
+}
