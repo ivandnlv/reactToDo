@@ -6,10 +6,10 @@
     max-height: calc(90px - 20px - 20px);
     padding: 20px 25px;
     border-radius: 30px;
-    background: #383838;
     margin-bottom: 25px;
     align-items: center;
     input {
+        text-shadow: 3px 2px 4px rgba(0, 0, 0, 0.25);
         font-weight: 700;
         background: none;
         flex: 1;
@@ -47,4 +47,14 @@
             }
         }
     }
+}
+
+.green {
+    background: #1AD471;  
+}
+.yellow {
+    background: #F5D01E;
+}
+.defaultClr {
+    background: #383838;
 }

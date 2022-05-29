@@ -1,0 +1,18 @@
+.pageHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    h1 {
+        flex: 1;
+        text-align: center;
+        font-weight: 700;
+        font-size: 40px;
+        line-height: 48px;
+        text-shadow: 3px 2px 4px rgba(0, 0, 0, 0.25);
+        color: #fff;
+        width: 100%;
+    }
+    button {
+        position: absolute;
+    }
+}

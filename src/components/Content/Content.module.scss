@@ -1,0 +1,19 @@
+.content {
+    padding: 90px 60px;
+    a {
+        text-decoration: none;
+    }
+}
+
+.buttons {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.tasksList {
+    margin-top: 70px;
+    max-width: 100%;
+    max-height: calc(345px * 2);
+    overflow-y: auto;
+}
