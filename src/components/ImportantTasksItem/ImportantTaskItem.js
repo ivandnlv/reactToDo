@@ -1,26 +1,22 @@
 import React, {useState, useRef} from 'react';
-import editIcon from './icons/edit-btn.svg';
-import editDoneIcon from './icons/edit-done-btn.svg';
-import deleteIcon from './icons/delete-btn.svg';
-import importantIcon from './icons/important-btn.svg';
-import completeIcon from './icons/complete-btn.svg';
+import editIcon from '../TaskItem/icons/edit-btn.svg';
+import editDoneIcon from '../TaskItem/icons/edit-done-btn.svg';
+import importantImage from '../TaskItem/icons/important-btn.svg';
+import deleteIcon from '../TaskItem/icons/delete-btn.svg';
 
-import styles from './TaskItem.module.scss';
+import styles from '../TaskItem/TaskItem.module.scss';
 
-const {tasksItem, green, yellow, defaultClr} = styles; 
+const {tasksItem, yellow, defaultClr} = styles;
 
-const TaskItem = ({id, name, setNewTask, taskToComplete, colorName, taskToImportant}) => {
+const CompletedTaskItem = ({id, name, setNewTask, taskToImportant, createNewTask}) => {
     const [inputDisable, setInputDisable] = useState(false);
-    const [color, setColor] = useState('');
+    const [color, setColor] = useState('yellow');
     const input = useRef(null);
 
-    const obj = {id, name};
-
-    const onClickComplete = () => {
-        if (color !== 'green') {
-            setColor('green');
-        } else setColor('');
-        taskToComplete(obj);
+    const onClickImportant = () => {
+        const obj = {id, name};
+        createNewTask(obj);
+        taskToImportant(obj);
     }
 
     const onClickEdit = () => {
@@ -28,13 +24,6 @@ const TaskItem = ({id, name, setNewTask, taskToComplete, colorName, taskToImport
         if (!inputDisable) {
             setTimeout(() => input.current.focus(), 50);
         }
-    }
-
-    const onClickImportant = () => {
-        if (color !== 'yellow') {
-            setColor('yellow');
-        } else setColor('');
-        taskToImportant(obj);
     }
 
     const onClickEnterKey = (e) => {
@@ -51,7 +40,7 @@ const TaskItem = ({id, name, setNewTask, taskToComplete, colorName, taskToImport
         setNewTask(prev => [...prev, obj]);
     }
 
-    const chooseColor = color === 'green' ? green : color === 'yellow' ? yellow : defaultClr;
+    const chooseColor = color === 'yellow' ? yellow : defaultClr;
 
     return (
         <div className={tasksItem + ' ' + chooseColor}>
@@ -74,12 +63,8 @@ const TaskItem = ({id, name, setNewTask, taskToComplete, colorName, taskToImport
                 <img src={inputDisable ? editDoneIcon : editIcon} alt="edit" onClick={onClickEdit}/>
             </button>
 
-            <button className='tasks__item-complete'>
-                <img src={completeIcon} alt="completed" onClick={onClickComplete}/>
-            </button>
-
             <button className='tasks__item-important'>
-                <img src={importantIcon} alt="important" onClick={onClickImportant}/>
+                <img src={importantImage} alt="completed" onClick={onClickImportant}/>
             </button>
 
             <button className='tasks__item-remove'>
@@ -89,4 +74,4 @@ const TaskItem = ({id, name, setNewTask, taskToComplete, colorName, taskToImport
     );
 };
 
-export default TaskItem;
+export default CompletedTaskItem;

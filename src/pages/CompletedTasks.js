@@ -1,23 +1,31 @@
-import React from 'react';
-import Empty from '../../components/Empty/Empty';
-import CompletedTaskItem from '../../components/CompletedTaskItem/CompletedTaskItem';
-import Btn from '../../components/Btn/Btn';
+import {useContext} from 'react';
+import Empty from '../components/Empty/Empty';
+import CompletedTaskItem from '../components/CompletedTaskItem/CompletedTaskItem';
+import Btn from '../components/Btn/Btn';
+import TodoContext from '../components/Context';
 
-import styles from './CompletedTasks.module.scss';
+import styles from './Tasks.module.scss';
+import { Link } from 'react-router-dom';
+
 
 const {pageHeader} = styles;
 const CompletedTasks = ({tasks, tasksClass, createNewTask, taskToComplete, buttonsStyle}) => {
+    const {sortAndFilterArray} = useContext(TodoContext);
+    const completedTasks = sortAndFilterArray(tasks);
+
     return (
         <>
             <div className={pageHeader}>
-                <Btn color={'green'} text={'Назад'} />
+                <Link to={'/'}>
+                    <Btn color={'green'} text={'Назад'}/>
+                </Link>
                 <h1>Выполненные задачи</h1>
             </div>
             <div className={tasksClass}>
                 {tasks.length === 0 ? 
                     <Empty text={'Вы еще не выполнили ни одной задачи'}/> 
                     : 
-                    tasks.sort((a, b) => parseFloat(a.id) - parseFloat(b.id))
+                    completedTasks
                     .map((task, index) => 
                         <CompletedTaskItem 
                             id={index + 1} 

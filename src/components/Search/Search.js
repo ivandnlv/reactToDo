@@ -5,11 +5,11 @@ import styles from './Search.module.scss';
 
 const {search} = styles;
 
-const Search = () => {
+const Search = ({onChange}) => {
     return (
         <div className={search}>
             <img src={searchIcon} alt="search" />
-            <input type="text" placeholder='Найти...'/>
+            <input type="text" placeholder='Найти...' onChange={onChange}/>
         </div>
     );
 };

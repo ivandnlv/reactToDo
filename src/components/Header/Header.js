@@ -6,7 +6,8 @@ import styles from './Header.module.scss';
 import { Link } from 'react-router-dom';
 
 const {header, logo} = styles;
-const Header = () => {
+
+const Header = ({getSearchValue}) => {
     return (
         <header className={header}>
             <Link to="/">
@@ -18,7 +19,7 @@ const Header = () => {
                     </div>
                 </div>
             </Link>
-            <Search />
+            <Search onChange={getSearchValue}/>
         </header>
     );
 };
