@@ -8,13 +8,18 @@ import styles from '../TaskItem/TaskItem.module.scss';
 
 const {tasksItem, yellow, defaultClr} = styles;
 
-const CompletedTaskItem = ({id, name, setNewTask, taskToImportant, createNewTask}) => {
+const ImportantTaskItem = ({id, name, setNewTask, taskToImportant, createNewTask, taskToCart}) => {
     const [inputDisable, setInputDisable] = useState(false);
     const [color, setColor] = useState('yellow');
     const input = useRef(null);
+    const obj = {id, name};
+
+    const onClickDelete = () => {
+        taskToImportant(obj);
+        taskToCart(obj);
+    }
 
     const onClickImportant = () => {
-        const obj = {id, name};
         createNewTask(obj);
         taskToImportant(obj);
     }
@@ -68,10 +73,10 @@ const CompletedTaskItem = ({id, name, setNewTask, taskToImportant, createNewTask
             </button>
 
             <button className='tasks__item-remove'>
-                <img src={deleteIcon} alt="delete"/>
+                <img src={deleteIcon} alt="delete" onClick={onClickDelete}/>
             </button>
         </div>
     );
 };
 
-export default CompletedTaskItem;
+export default ImportantTaskItem;

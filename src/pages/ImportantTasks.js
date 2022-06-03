@@ -8,7 +8,7 @@ import ImportantTaskItem from '../components/ImportantTasksItem/ImportantTaskIte
 import styles from './Tasks.module.scss';
 
 const {pageHeader} = styles;
-const ImportantTasks = ({tasks, tasksClass, setNewTask, createNewTask, taskToImportant}) => {
+const ImportantTasks = ({tasks, tasksClass, setNewTask, createNewTask, taskToImportant, taskToCart}) => {
     const  {sortAndFilterArray} = useContext(TodoContext);
     const importantTasks = sortAndFilterArray(tasks)
 
@@ -31,6 +31,7 @@ const ImportantTasks = ({tasks, tasksClass, setNewTask, createNewTask, taskToImp
                             name={task.name} 
                             key={index}
                             createNewTask={createNewTask}
+                            taskToCart={taskToCart}
                             taskToImportant={taskToImportant}
                         />
                     )

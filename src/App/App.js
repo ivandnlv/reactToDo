@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Router } from "react-router-dom";
 import Content from "../components/Content/Content";
 import Header from "../components/Header/Header";
-import SearchContext from "../components/Context";
+import TodoContext from "../components/Context";
 
 import styles from './App.module.scss';
 
@@ -27,10 +27,10 @@ function App() {
 
   return (
       <div className={wrapper}>
-        <SearchContext.Provider value={{ sortAndFilterArray }}>
+        <TodoContext.Provider value={{ searchValue, sortAndFilterArray }}>
           <Header getSearchValue={getSearchValue}/>
           <Content searchValue={searchValue}/>
-        </SearchContext.Provider>
+        </TodoContext.Provider>
       </div>
   );
 }

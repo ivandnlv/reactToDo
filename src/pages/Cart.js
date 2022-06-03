@@ -22,7 +22,7 @@ const Cart = ({tasks, tasksClass, createNewTask, taskToCart, setNewDeletedTask})
                 <Link to={'/'}>
                     <Btn color={'blue'} text={'Назад'}/>
                 </Link>
-                <h1>Выполненные задачи</h1>
+                <h1>Корзина</h1>
             </div>
             <div className={tasksClass}>
                 {tasks.length === 0 ? 

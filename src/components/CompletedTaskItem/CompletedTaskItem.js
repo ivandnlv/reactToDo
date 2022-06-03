@@ -8,13 +8,18 @@ import styles from '../TaskItem/TaskItem.module.scss';
 
 const {tasksItem, green, defaultClr} = styles;
 
-const CompletedTaskItem = ({id, name, setNewTask, taskToComplete, createNewTask, setNewCompletedTask}) => {
+const CompletedTaskItem = ({id, name, setNewTask, taskToComplete, createNewTask, setNewCompletedTask, taskToCart}) => {
     const [inputDisable, setInputDisable] = useState(false);
     const [color, setColor] = useState('green');
     const input = useRef(null);
+    const obj = {id, name};
+
+    const onClickDelete = () => {
+        taskToComplete(obj);
+        taskToCart(obj);
+    }
 
     const onClickComplete = () => {
-        const obj = {id, name};
         createNewTask(obj);
         taskToComplete(obj);
     }
@@ -68,7 +73,7 @@ const CompletedTaskItem = ({id, name, setNewTask, taskToComplete, createNewTask,
             </button>
 
             <button className='tasks__item-remove'>
-                <img src={deleteIcon} alt="delete"/>
+                <img src={deleteIcon} alt="delete" onClick={onClickDelete}/>
             </button>
         </div>
     );

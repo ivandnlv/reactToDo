@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import {useContext, useEffect, useState} from 'react';
 import { Route, Router } from 'react-router-dom';
 import CompletedTasks from '../../pages/CompletedTasks';
 import ImportantTasks from '../../pages/ImportantTasks';
@@ -6,6 +6,7 @@ import Main from '../../pages/Main';
 import Cart from '../../pages/Cart';
 
 import styles from './Content.module.scss';
+import TodoContext from '../Context';
 
 const {content, buttons, tasksList} = styles;
 
@@ -41,6 +42,7 @@ const Content = () => {
         if (typeof(localTasksDeleted) === 'object') {
             setNewDeletedTask(localTasksDeleted);
         }
+
     }, []);
 
     useEffect(() => {
@@ -87,17 +89,19 @@ const Content = () => {
     }
 
     const taskToCart = (obj) => {
-        if (tasksImportant.find(deletedObj => deletedObj.name === obj.name)) {
-            setNewImportantTask(prev => prev.filter(item => item.name !== obj.name));
+        if (tasksDeleted.find(deletedObj => deletedObj.name === obj.name)) {
+            setNewDeletedTask(prev => prev.filter(item => item.name !== obj.name));
         } else {
             setNewTask(prev => prev.filter(item => item.name !== obj.name));
             setNewDeletedTask(prev => [...prev, obj]);
         }
     }
     
+    const {searchValue} = useContext(TodoContext);
 
     return (
         <div className={content}>
+            {searchValue !== '' ? <h2>Поиск по запросу: {searchValue}</h2> : null}
             <Route path="/" exact>
                 <Main 
                     tasksClass={tasksList}
@@ -112,6 +116,7 @@ const Content = () => {
             </Route>
             <Route path="/completed" exact>
                 <CompletedTasks
+                    taskToCart={taskToCart}
                     tasksClass={tasksList}
                     tasks={tasksCompleted} 
                     setNewCompletedTask={setNewCompletedTask}
@@ -124,6 +129,8 @@ const Content = () => {
                 <ImportantTasks 
                     tasksClass={tasksList}
                     tasks={tasksImportant} 
+                    setNewTask={setNewTask}
+                    taskToCart={taskToCart}
                     taskToImportant={taskToImportant} 
                     createNewTask={createNewTask}
                     buttonsStyle={buttons}
