@@ -5,7 +5,7 @@
 * React Router,
 * React Hooks (useState, useContext, useRef)
 
-Макет для него сделал в figma. https://www.figma.com/file/gdJ1JoY5PhONUCo0lbNBUh/ToDo?node-id=0%3A1
+Дизайн делал сам.
 
 Для запуска необходимо прописать npm install, далее npm start
 
