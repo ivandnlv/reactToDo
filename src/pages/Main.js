@@ -9,7 +9,7 @@ import deleteImage from './icons/delete-btn.svg';
 import SearchContext from '../components/Context';
 import Empty from '../components/Empty/Empty';
 
-const Main = ({tasksArr, setNewTask, taskToComplete, createNewTask, buttonsStyle, tasksClass, taskToImportant}) => {
+const Main = ({tasksArr, setNewTask, taskToComplete, createNewTask, buttonsStyle, tasksClass, taskToImportant, taskToCart}) => {
     const {sortAndFilterArray} = useContext(SearchContext);
     const tasks = sortAndFilterArray(tasksArr);
     
@@ -32,12 +32,14 @@ const Main = ({tasksArr, setNewTask, taskToComplete, createNewTask, buttonsStyle
                         image={importantImage}
                     />
                 </Link>
-                <Btn 
-                    color={'blue'} 
-                    text={'Корзина'} 
-                    needImage={true} 
-                    image={deleteImage}
-                />
+                <Link to='/cart'>
+                    <Btn 
+                        color={'blue'} 
+                        text={'Корзина'} 
+                        needImage={true} 
+                        image={deleteImage}
+                    />
+                </Link>
             </div>
 
             <div className={tasksClass}>
@@ -48,10 +50,11 @@ const Main = ({tasksArr, setNewTask, taskToComplete, createNewTask, buttonsStyle
                         <TaskItem 
                             id={index + 1} 
                             name={task.name} 
-                            key={task.id}
+                            key={index}
                             setNewTask={setNewTask}
                             taskToComplete={taskToComplete}
                             taskToImportant={taskToImportant}
+                            taskToCart={taskToCart}
                         />
                     )
                 }

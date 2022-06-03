@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 
 
 const {pageHeader} = styles;
-const CompletedTasks = ({tasks, tasksClass, createNewTask, taskToComplete, buttonsStyle}) => {
+const CompletedTasks = ({tasks, tasksClass, createNewTask, taskToComplete, buttonsStyle, setNewCompletedTask}) => {
     const {sortAndFilterArray} = useContext(TodoContext);
     const completedTasks = sortAndFilterArray(tasks);
 
@@ -29,6 +29,7 @@ const CompletedTasks = ({tasks, tasksClass, createNewTask, taskToComplete, butto
                     .map((task, index) => 
                         <CompletedTaskItem 
                             id={index + 1} 
+                            setNewCompletedTask={setNewCompletedTask}
                             name={task.name} 
                             key={task.id}
                             createNewTask={createNewTask}

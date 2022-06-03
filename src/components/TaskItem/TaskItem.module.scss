@@ -55,6 +55,28 @@
 .yellow {
     background: #F5D01E;
 }
+.blue {
+    background: #87BBC9;
+}
 .defaultClr {
     background: #383838;
+}
+
+.recoverBtn {
+    color: #000;
+    display: block !important;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    padding: 12px !important;
+    height: 51px !important;
+    background: #FFFFFF !important;
+    width: 200px !important;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s opacity ease-in-out;
+    &:hover {
+        opacity: 0.8;
+    }
 }

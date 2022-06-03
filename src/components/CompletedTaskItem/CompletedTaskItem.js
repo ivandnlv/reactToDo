@@ -8,7 +8,7 @@ import styles from '../TaskItem/TaskItem.module.scss';
 
 const {tasksItem, green, defaultClr} = styles;
 
-const CompletedTaskItem = ({id, name, setNewTask, taskToComplete, createNewTask}) => {
+const CompletedTaskItem = ({id, name, setNewTask, taskToComplete, createNewTask, setNewCompletedTask}) => {
     const [inputDisable, setInputDisable] = useState(false);
     const [color, setColor] = useState('green');
     const input = useRef(null);
@@ -36,8 +36,8 @@ const CompletedTaskItem = ({id, name, setNewTask, taskToComplete, createNewTask}
         const num = id;
         const text = e.target.value.slice(3);
         const obj = {id: num, name: text}
-        setNewTask(prev => prev.filter(item => item.id !== id));
-        setNewTask(prev => [...prev, obj]);
+        setNewCompletedTask(prev => prev.filter(item => item.id !== id));
+        setNewCompletedTask(prev => [...prev, obj]);
     }
 
     const chooseColor = color === 'green' ? green : defaultClr;

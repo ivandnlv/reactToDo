@@ -7,19 +7,15 @@ import completeIcon from './icons/complete-btn.svg';
 
 import styles from './TaskItem.module.scss';
 
-const {tasksItem, green, yellow, defaultClr} = styles; 
+const {tasksItem, defaultClr} = styles; 
 
-const TaskItem = ({id, name, setNewTask, taskToComplete, colorName, taskToImportant}) => {
+const TaskItem = ({id, name, setNewTask, taskToComplete, colorName, taskToImportant, taskToCart}) => {
     const [inputDisable, setInputDisable] = useState(false);
-    const [color, setColor] = useState('');
     const input = useRef(null);
 
     const obj = {id, name};
 
     const onClickComplete = () => {
-        if (color !== 'green') {
-            setColor('green');
-        } else setColor('');
         taskToComplete(obj);
     }
 
@@ -31,10 +27,11 @@ const TaskItem = ({id, name, setNewTask, taskToComplete, colorName, taskToImport
     }
 
     const onClickImportant = () => {
-        if (color !== 'yellow') {
-            setColor('yellow');
-        } else setColor('');
         taskToImportant(obj);
+    }
+
+    const onClickDelete = () => {
+        taskToCart(obj);
     }
 
     const onClickEnterKey = (e) => {
@@ -51,10 +48,8 @@ const TaskItem = ({id, name, setNewTask, taskToComplete, colorName, taskToImport
         setNewTask(prev => [...prev, obj]);
     }
 
-    const chooseColor = color === 'green' ? green : color === 'yellow' ? yellow : defaultClr;
-
     return (
-        <div className={tasksItem + ' ' + chooseColor}>
+        <div className={tasksItem + ' ' + defaultClr}>
             {inputDisable ? 
                 <input 
                     type="text" 
@@ -83,7 +78,7 @@ const TaskItem = ({id, name, setNewTask, taskToComplete, colorName, taskToImport
             </button>
 
             <button className='tasks__item-remove'>
-                <img src={deleteIcon} alt="delete"/>
+                <img src={deleteIcon} alt="delete" onClick={onClickDelete}/>
             </button>
         </div>
     );

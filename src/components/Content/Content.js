@@ -3,6 +3,7 @@ import { Route, Router } from 'react-router-dom';
 import CompletedTasks from '../../pages/CompletedTasks';
 import ImportantTasks from '../../pages/ImportantTasks';
 import Main from '../../pages/Main';
+import Cart from '../../pages/Cart';
 
 import styles from './Content.module.scss';
 
@@ -19,11 +20,14 @@ const Content = () => {
     
     const [tasksImportant, setNewImportantTask] = useState([]);
     const [tasksCompleted, setNewCompletedTask] = useState([]);
+    const [tasksDeleted, setNewDeletedTask] = useState([]);
     
     const createNewTask = (obj) => {
         if (tasks.find(favObject => favObject.name === obj.name)) {
             setNewTask(prev => prev.filter(item => item.name !== obj.name));
-        } else  setNewTask(prev => [...prev, obj]);
+        } else  {
+            setNewTask(prev => [...prev, obj]);
+        }
     }
 
     const taskToComplete = (obj) => {
@@ -43,6 +47,15 @@ const Content = () => {
             setNewImportantTask(prev => [...prev, obj]);
         }
     }
+
+    const taskToCart = (obj) => {
+        if (tasksImportant.find(deletedObj => deletedObj.name === obj.name)) {
+            setNewImportantTask(prev => prev.filter(item => item.name !== obj.name));
+        } else {
+            setNewTask(prev => prev.filter(item => item.name !== obj.name));
+            setNewDeletedTask(prev => [...prev, obj]);
+        }
+    }
     
 
     return (
@@ -54,6 +67,7 @@ const Content = () => {
                     setNewTask={setNewTask} 
                     taskToComplete={taskToComplete} 
                     taskToImportant={taskToImportant}
+                    taskToCart={taskToCart}
                     createNewTask={createNewTask}
                     buttonsStyle={buttons}
                 />
@@ -62,6 +76,7 @@ const Content = () => {
                 <CompletedTasks
                     tasksClass={tasksList}
                     tasks={tasksCompleted} 
+                    setNewCompletedTask={setNewCompletedTask}
                     taskToComplete={taskToComplete} 
                     createNewTask={createNewTask}
                     buttonsStyle={buttons}
@@ -73,6 +88,16 @@ const Content = () => {
                     tasks={tasksImportant} 
                     taskToImportant={taskToImportant} 
                     createNewTask={createNewTask}
+                    buttonsStyle={buttons}
+                />
+            </Route>
+            <Route path="/cart" exact>
+                <Cart
+                    tasksClass={tasksList}
+                    tasks={tasksDeleted} 
+                    taskToCart={taskToCart} 
+                    createNewTask={createNewTask}
+                    setNewDeletedTask={setNewDeletedTask}
                     buttonsStyle={buttons}
                 />
             </Route>
