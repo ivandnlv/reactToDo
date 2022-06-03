@@ -31,7 +31,7 @@ const CompletedTasks = ({tasks, tasksClass, createNewTask, taskToComplete, butto
                             id={index + 1} 
                             setNewCompletedTask={setNewCompletedTask}
                             name={task.name} 
-                            key={task.id}
+                            key={index}
                             createNewTask={createNewTask}
                             taskToComplete={taskToComplete}
                         />

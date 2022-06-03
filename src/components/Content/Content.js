@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { Route, Router } from 'react-router-dom';
 import CompletedTasks from '../../pages/CompletedTasks';
 import ImportantTasks from '../../pages/ImportantTasks';
@@ -16,11 +16,49 @@ const Content = () => {
         {id: 3, name: 'Приготовить еду'},
         {id: 2, name: 'Убраться в комнате'}
     ]);
-
-    
     const [tasksImportant, setNewImportantTask] = useState([]);
     const [tasksCompleted, setNewCompletedTask] = useState([]);
     const [tasksDeleted, setNewDeletedTask] = useState([]);
+
+    useEffect(() => {
+        const localTasks = JSON.parse(localStorage.getItem('tasks'));
+        const localTasksImportant = JSON.parse(localStorage.getItem('tasksImportant'));
+        const localTasksCompleted = JSON.parse(localStorage.getItem('tasksCompleted'));
+        const localTasksDeleted = JSON.parse(localStorage.getItem('tasksDeleted'));
+
+        if (typeof(localTasks) === 'object') {
+            setNewTask(localTasks);
+        }
+
+        if (typeof(localTasksImportant) === 'object') {
+            setNewImportantTask(localTasksImportant);
+        }
+
+        if (typeof(localTasksCompleted) === 'object') {
+            setNewCompletedTask(localTasksCompleted);
+        }
+
+        if (typeof(localTasksDeleted) === 'object') {
+            setNewDeletedTask(localTasksDeleted);
+        }
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+    }, [tasks]);
+
+    useEffect(() => {
+        localStorage.setItem('tasksImportant', JSON.stringify(tasksImportant));
+    }, [tasksImportant])
+    
+    useEffect(() => {
+        localStorage.setItem('tasksCompleted', JSON.stringify(tasksCompleted));
+    }, [tasksCompleted])
+
+    useEffect(() => {
+        localStorage.setItem('tasksDeleted', JSON.stringify(tasksDeleted));
+    }, [tasksDeleted])
+    
     
     const createNewTask = (obj) => {
         if (tasks.find(favObject => favObject.name === obj.name)) {
