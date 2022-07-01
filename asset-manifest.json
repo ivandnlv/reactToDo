@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/reactToDo/static/css/main.6c72167a.css",
+    "main.js": "/reactToDo/static/js/main.3f69101f.js",
+    "static/media/background.jpg": "/reactToDo/static/media/background.7c27c905b9e6363a699f.jpg",
+    "static/media/empty-img.png": "/reactToDo/static/media/empty-img.baa109bfdc8402f2b664.png",
+    "static/media/delete-btn.svg": "/reactToDo/static/media/delete-btn.fa78fc153018e6dd5230670c04c991c5.svg",
+    "static/media/edit-btn.svg": "/reactToDo/static/media/edit-btn.d39c34634d702825d9241656ef82dfae.svg",
+    "static/media/important-btn.svg": "/reactToDo/static/media/important-btn.fd346ebcb5bc6de75c689e53faca310d.svg",
+    "static/media/complete-btn.svg": "/reactToDo/static/media/complete-btn.454b8d1e735a875fd9c7e54fdd5b9bad.svg",
+    "static/media/Logo.svg": "/reactToDo/static/media/Logo.f9f8241b3139cb050898a7377cadeceb.svg",
+    "static/media/edit-done-btn.svg": "/reactToDo/static/media/edit-done-btn.0eba32307863a59d94a8c190be90ac1b.svg",
+    "index.html": "/reactToDo/index.html",
+    "static/media/search-icon.svg": "/reactToDo/static/media/search-icon.31102a84367544398e3f7e389510de98.svg",
+    "main.6c72167a.css.map": "/reactToDo/static/css/main.6c72167a.css.map",
+    "main.3f69101f.js.map": "/reactToDo/static/js/main.3f69101f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6c72167a.css",
+    "static/js/main.3f69101f.js"
+  ]
+}
